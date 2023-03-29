@@ -10,4 +10,6 @@ public interface Customerservice {
     //firmas de métodos
     public List<Customer> getCustomers();
     public Customer getCustomerById(UUID id);
+
+    public Customer saveNewCustomer(Customer customer);
 }
