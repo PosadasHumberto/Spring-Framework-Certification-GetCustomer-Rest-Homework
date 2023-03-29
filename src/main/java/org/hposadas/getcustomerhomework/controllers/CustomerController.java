@@ -4,7 +4,6 @@ package org.hposadas.getcustomerhomework.controllers;
 import lombok.RequiredArgsConstructor;
 import org.hposadas.getcustomerhomework.models.Customer;
 import org.hposadas.getcustomerhomework.services.Customerservice;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,6 +42,14 @@ public class CustomerController {
         headers.add("Location", "/api/customer/v1" + savedCustomer.getId());
 
         return new ResponseEntity(headers, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{customerId}")
+    public ResponseEntity updateCustomerById(@PathVariable("customerId") UUID id, @RequestBody Customer customer){
+
+        this.customerservice.updateCustomerById(id, customer);
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 }

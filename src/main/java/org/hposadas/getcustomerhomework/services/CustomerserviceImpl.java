@@ -71,4 +71,16 @@ public class CustomerserviceImpl implements Customerservice {
         this.customerMap.put(tempCustomer.getId(), tempCustomer);
         return tempCustomer;
     }
+
+    @Override
+    public void updateCustomerById(UUID id, Customer customer) {
+
+        Customer tempCustomer = this.getCustomerById(UUID.fromString(id.toString()));
+        tempCustomer.setCustomerName(customer.getCustomerName() != null? customer.getCustomerName() : tempCustomer.getCustomerName());
+        tempCustomer.setVersion(customer.getVersion() != null? customer.getVersion() : tempCustomer.getVersion());
+        tempCustomer.setLastModifiedDate(LocalDateTime.now());
+
+        this.customerMap.put(id, tempCustomer);
+
+    }
 }
