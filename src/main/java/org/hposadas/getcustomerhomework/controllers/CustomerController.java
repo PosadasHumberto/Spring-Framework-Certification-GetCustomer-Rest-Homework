@@ -1,6 +1,7 @@
 package org.hposadas.getcustomerhomework.controllers;
 
 
+import lombok.RequiredArgsConstructor;
 import org.hposadas.getcustomerhomework.models.Customer;
 import org.hposadas.getcustomerhomework.services.Customerservice;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +14,12 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
+@RequiredArgsConstructor        //to generate constructor injecting service
 @RequestMapping("/api/customer/v1")
 public class CustomerController {
 
     //atributos
-    @Autowired
-    private Customerservice customerservice;
+    private final Customerservice customerservice;
 
     //métodos
     @GetMapping()
