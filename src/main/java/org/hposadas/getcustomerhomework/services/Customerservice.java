@@ -11,6 +11,6 @@ public interface Customerservice {
     public List<Customer> getCustomers();
     public Customer getCustomerById(UUID id);
     public Customer saveNewCustomer(Customer customer);
-
     public void updateCustomerById(UUID id, Customer customer);
+    public void deleteCustomerById(UUID id);
 }

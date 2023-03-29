@@ -2,7 +2,6 @@ package org.hposadas.getcustomerhomework.services;
 
 import org.hposadas.getcustomerhomework.models.Customer;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -82,5 +81,10 @@ public class CustomerserviceImpl implements Customerservice {
 
         this.customerMap.put(id, tempCustomer);
 
+    }
+
+    @Override
+    public void deleteCustomerById(UUID id) {
+        this.customerMap.remove(id);
     }
 }
