@@ -31,6 +31,7 @@ public class CustomerController {
     public Customer getCustomerById(@PathVariable("customerId")UUID id){
 
         return this.customerservice.getCustomerById(id);
+
     }
 
     @PostMapping
