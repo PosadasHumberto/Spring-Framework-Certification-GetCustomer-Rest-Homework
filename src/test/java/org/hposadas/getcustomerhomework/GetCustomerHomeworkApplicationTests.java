@@ -86,4 +86,24 @@ class GetCustomerHomeworkApplicationTests {
                 .andExpect(status().is(201))
                 .andExpect(header().exists("Location"));
     }
+
+    @Test
+    void updateCustomerById() throws Exception {
+
+        Customer customer = Customer.builder()
+                .id(customerserviceImpl.getCustomers().get(0).getId())
+                .customerName("Omar Quintero")
+                .version(2)
+                .createdDate(customerserviceImpl.getCustomers().get(0).getCreatedDate())
+                .lastModifiedDate(LocalDateTime.now())
+                .build();
+
+        mockMvc.perform(put("/api/customer/v1/" + customerserviceImpl.getCustomers().get(0).getId())
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(customer)))
+                .andExpect(status().isNoContent());
+
+        verify(customerservice).updateCustomerById(any(UUID.class), any(Customer.class));
+    }
 }
